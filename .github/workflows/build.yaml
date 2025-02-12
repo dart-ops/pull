@@ -1,10 +1,6 @@
 name: Docker Build
 
 on:
-# push:
-#   branches:
-#     - main
-#     - 'release/**'  # Можно добавить поддержку release-веток
   push:
     tags:
       - '*'
@@ -12,9 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platform: [linux/amd64, linux/arm64, linux/arm64/v8]
 
     steps:
       - uses: actions/checkout@v3
@@ -37,4 +30,3 @@ jobs:
           labels: ${{ steps.metadata.outputs.labels }}
           cache: false
           cache-repository: ghcr.io/${{ github.repository }}/cache
-          build-args: TARGETPLATFORM=${{ matrix.platform }}
