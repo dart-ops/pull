@@ -38,4 +38,3 @@ jobs:
           cache: false
           cache-repository: ghcr.io/${{ github.repository }}/cache
           build-args: TARGETPLATFORM=${{ matrix.platform }}
-          platforms: linux/amd64,linux/arm64
